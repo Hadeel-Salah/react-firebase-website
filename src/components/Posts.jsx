@@ -1,6 +1,6 @@
 import React from 'react';
-import { PageHeader } from 'antd';
-import Post from './Post';
+import PostSnippet from './PostSnippet';
+import {PageHeader} from 'antd'
 import api from '../mock_api';
 import _ from 'lodash';
 
@@ -10,18 +10,21 @@ import _ from 'lodash';
 function Posts(){
     return(
         <div className="post_container">
-        <div className="page_header_container">
-        <PageHeader
-                title="Posts"
-                style = {{ 
-                    border: '1px solid rgb(235, 237, 240)'
-                  }}
-            />
-        </div>
+            <div className="page_header_container">
+                <PageHeader
+                        title="Posts"
+                        style = {{ 
+                            border: '1px solid rgb(235, 237, 240)'
+                        }}
+                    />
+            </div>
+
         <div className="articles_container">
             {
-                _.map(api, (article) => (
-                        <Post
+                _.map(api, (article , indx) => (
+                        <PostSnippet
+                            key={indx}
+                            id={indx}
                             title={article.title}
                             content={article.content}
                           />
