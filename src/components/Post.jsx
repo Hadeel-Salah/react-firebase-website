@@ -10,7 +10,7 @@ const Post = (props) =>{
         let post = api[props.id]
         setTitle(post.title)
         setContent(post.content)
-    }, [])
+    }, [props.id])
     return(
         <div className="post_container">
         <div className="page_header_container">
