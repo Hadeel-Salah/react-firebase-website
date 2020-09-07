@@ -1,6 +1,6 @@
 import  React , {useState} from 'react';
 import {PageHeader, Input, Button} from 'antd'
-import db from './firebase';
+import firebase from './firebase';
 
 const { TextArea } = Input;
 
@@ -13,10 +13,10 @@ const CreatePost = (props) =>{
     const onContentChange = (event) => setContent(event.target.value);
     
     const onCreatePost = () => {
-        let postRef = db.ollection("posts")
+        let postRef = firebase.database().ref("posts")
         let payload = {title , content}
 
-        postRef.add(payload).then(function(docRef) {
+        postRef.push(payload).then(function(docRef) {
             console.log("Document successfully written!", docRef);
         })
      
