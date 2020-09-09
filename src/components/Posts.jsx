@@ -1,26 +1,13 @@
-import React , {useState, useEffect}from 'react';
+import React from 'react';
 import PostSnippet from './PostSnippet';
 import {PageHeader} from 'antd'
-import firebase from './firebase'
 import api from '../mock_api';
 import _ from 'lodash';
 
 
 
-const Posts = (props) =>{
-    const [Post, setPosts] = useState([]);
-    useEffect (() =>{
-        firebase.database().ref('/posts').on('value', querySnapShot => {
-            let data = querySnapShot.val();
-            let allPosts = {
-                data
-            };
-           setPosts(
-             allPosts
-           );
-          });
-    }, [])
-    console.log(Post)
+
+function Posts(){
     return(
         <div className="post_container">
             <div className="page_header_container">
@@ -46,6 +33,7 @@ const Posts = (props) =>{
             }
         </div>
         </div>
+
 )
 }
 export default Posts;
